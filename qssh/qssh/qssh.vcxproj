@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{992E4912-7CAF-4272-9AA5-742546A41775}</ProjectGuid>
+    <Keyword>QtVS_v304</Keyword>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|Win32'">10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|Win32'">10.0.17763.0</WindowsTargetPlatformVersion>
+    <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
+    <Import Project="$(QtMsBuild)\qt_defaults.props" />
+  </ImportGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|Win32'" Label="QtSettings">
+    <QtInstall>5.12.12_msvc2017</QtInstall>
+    <QtModules>core;network;gui;widgets;networkauth</QtModules>
+    <QtBuildConfig>debug</QtBuildConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|Win32'" Label="QtSettings">
+    <QtInstall>5.12.12_msvc2017</QtInstall>
+    <QtModules>core</QtModules>
+    <QtBuildConfig>release</QtBuildConfig>
+  </PropertyGroup>
+  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
+    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
+  </Target>
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|Win32'">
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|Win32'">
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\src\libs\3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>botan.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\src\libs\3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>botan.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|Win32'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PreprocessorDefinitions>QSSH_LIB;QSSH_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Release|Win32'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <Optimization>MaxSpeed</Optimization>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PreprocessorDefinitions>QSSH_LIB;QSSH_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <QtMoc Include="..\..\src\libs\ssh\sftpchannel.h" />
+    <QtMoc Include="..\..\src\libs\ssh\sftpchannel_p.h" />
+    <ClInclude Include="..\..\src\libs\ssh\sftpdefs.h" />
+    <QtMoc Include="..\..\src\libs\ssh\sftpfilesystemmodel.h" />
+    <ClInclude Include="..\..\src\libs\ssh\sftpincomingpacket_p.h" />
+    <ClInclude Include="..\..\src\libs\ssh\sftpoperation_p.h" />
+    <ClInclude Include="..\..\src\libs\ssh\sftpoutgoingpacket_p.h" />
+    <ClInclude Include="..\..\src\libs\ssh\sftppacket_p.h" />
+    <ClInclude Include="..\..\src\libs\ssh\sshbotanconversions_p.h" />
+    <ClInclude Include="..\..\src\libs\ssh\sshcapabilities_p.h" />
+    <QtMoc Include="..\..\src\libs\ssh\sshchannel_p.h" />
+    <QtMoc Include="..\..\src\libs\ssh\sshchannelmanager_p.h" />
+    <QtMoc Include="..\..\src\libs\ssh\sshconnection.h" />
+    <QtMoc Include="..\..\src\libs\ssh\sshconnection_p.h" />
+    <ClInclude Include="..\..\src\libs\ssh\sshconnectionmanager.h" />
+    <ClInclude Include="..\..\src\libs\ssh\sshcryptofacility_p.h" />
+    <ClInclude Include="..\..\src\libs\ssh\ssherrors.h" />
+    <ClInclude Include="..\..\src\libs\ssh\sshexception_p.h" />
+    <ClInclude Include="..\..\src\libs\ssh\sshincomingpacket_p.h" />
+    <ClInclude Include="..\..\src\libs\ssh\sshkeyexchange_p.h" />
+    <ClInclude Include="..\..\src\libs\ssh\sshkeygenerator.h" />
+    <ClInclude Include="..\..\src\libs\ssh\sshkeypasswordretriever_p.h" />
+    <ClInclude Include="..\..\src\libs\ssh\sshoutgoingpacket_p.h" />
+    <ClInclude Include="..\..\src\libs\ssh\sshpacketparser_p.h" />
+    <ClInclude Include="..\..\src\libs\ssh\sshpacket_p.h" />
+    <ClInclude Include="..\..\src\libs\ssh\sshpseudoterminal.h" />
+    <QtMoc Include="..\..\src\libs\ssh\sshremoteprocess.h" />
+    <QtMoc Include="..\..\src\libs\ssh\sshremoteprocess_p.h" />
+    <QtMoc Include="..\..\src\libs\ssh\sshremoteprocessrunner.h" />
+    <ClInclude Include="..\..\src\libs\ssh\sshsendfacility_p.h" />
+    <ClInclude Include="..\..\src\libs\ssh\ssh_global.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\libs\ssh\sftpchannel.cpp" />
+    <ClCompile Include="..\..\src\libs\ssh\sftpdefs.cpp" />
+    <ClCompile Include="..\..\src\libs\ssh\sftpfilesystemmodel.cpp" />
+    <ClCompile Include="..\..\src\libs\ssh\sftpincomingpacket.cpp" />
+    <ClCompile Include="..\..\src\libs\ssh\sftpoperation.cpp" />
+    <ClCompile Include="..\..\src\libs\ssh\sftpoutgoingpacket.cpp" />
+    <ClCompile Include="..\..\src\libs\ssh\sftppacket.cpp" />
+    <ClCompile Include="..\..\src\libs\ssh\sshcapabilities.cpp" />
+    <ClCompile Include="..\..\src\libs\ssh\sshchannel.cpp" />
+    <ClCompile Include="..\..\src\libs\ssh\sshchannelmanager.cpp" />
+    <ClCompile Include="..\..\src\libs\ssh\sshconnection.cpp" />
+    <ClCompile Include="..\..\src\libs\ssh\sshcryptofacility.cpp" />
+    <ClCompile Include="..\..\src\libs\ssh\sshincomingpacket.cpp" />
+    <ClCompile Include="..\..\src\libs\ssh\sshkeyexchange.cpp" />
+    <ClCompile Include="..\..\src\libs\ssh\sshkeygenerator.cpp" />
+    <ClCompile Include="..\..\src\libs\ssh\sshkeypasswordretriever.cpp" />
+    <ClCompile Include="..\..\src\libs\ssh\sshoutgoingpacket.cpp" />
+    <ClCompile Include="..\..\src\libs\ssh\sshpacket.cpp" />
+    <ClCompile Include="..\..\src\libs\ssh\sshpacketparser.cpp" />
+    <ClCompile Include="..\..\src\libs\ssh\sshremoteprocess.cpp" />
+    <ClCompile Include="..\..\src\libs\ssh\sshremoteprocessrunner.cpp" />
+    <ClCompile Include="..\..\src\libs\ssh\sshsendfacility.cpp" />
+    <QtMoc Include="..\..\src\libs\ssh\sshconnectionmanager.cpp">
+      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">input</DynamicSource>
+      <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename).moc</QtMocFileName>
+      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">input</DynamicSource>
+      <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename).moc</QtMocFileName>
+    </QtMoc>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
+    <Import Project="$(QtMsBuild)\qt.targets" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

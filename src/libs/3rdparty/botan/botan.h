@@ -31,6 +31,8 @@
 
 #ifndef BOTAN_DLL
 #define BOTAN_DLL Q_DECL_IMPORT
+#else
+#define BOTAN_DLL Q_DECL_EXPORT
 #endif
 
 /* Chunk sizes */

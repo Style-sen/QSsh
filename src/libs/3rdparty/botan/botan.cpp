@@ -46249,7 +46249,7 @@ namespace {
         : "0" (type))
 
 #else
-  #warning "No method of calling CPUID for this compiler"
+  //#warning "No method of calling CPUID for this compiler"
 #endif
 
 #endif
