@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qssh", "qssh\qssh.vcxproj",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "botan", "botan\botan.vcxproj", "{701E22E0-602B-49CB-BE72-0DDBBBBCE9A5}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SecureUploader", "SecureUploader\SecureUploader.vcxproj", "{B690DF0A-D57F-4229-80C5-179A44AB6B0E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -27,6 +29,12 @@ Global
 		{701E22E0-602B-49CB-BE72-0DDBBBBCE9A5}.Release|x64.ActiveCfg = Release|Win32
 		{701E22E0-602B-49CB-BE72-0DDBBBBCE9A5}.Release|x86.ActiveCfg = Release|Win32
 		{701E22E0-602B-49CB-BE72-0DDBBBBCE9A5}.Release|x86.Build.0 = Release|Win32
+		{B690DF0A-D57F-4229-80C5-179A44AB6B0E}.Debug|x64.ActiveCfg = Debug|Win32
+		{B690DF0A-D57F-4229-80C5-179A44AB6B0E}.Debug|x86.ActiveCfg = Debug|Win32
+		{B690DF0A-D57F-4229-80C5-179A44AB6B0E}.Debug|x86.Build.0 = Debug|Win32
+		{B690DF0A-D57F-4229-80C5-179A44AB6B0E}.Release|x64.ActiveCfg = Release|Win32
+		{B690DF0A-D57F-4229-80C5-179A44AB6B0E}.Release|x86.ActiveCfg = Release|Win32
+		{B690DF0A-D57F-4229-80C5-179A44AB6B0E}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
